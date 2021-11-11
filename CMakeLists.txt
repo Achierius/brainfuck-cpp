@@ -12,7 +12,6 @@ cmake_minimum_required(VERSION 3.14)
 # the source. See exampleConfig.h.in for some more details.
 project(CPP_BOILERPLATE VERSION 1.2.3.4 LANGUAGES CXX)
 
-
 # Options: Things you can set via commandline options to cmake (e.g. -DENABLE_LTO=[ON|OFF])
 option(ENABLE_WARNINGS_SETTINGS "Allow target_set_warnings to add flags and defines.
                                  Set this to OFF if you want to provide your own warning parameters." ON)
@@ -39,6 +38,10 @@ find_lto(CXX)
 # --------------------------------------------------------------------------------
 set(SOURCES          # All .cpp files in src/
     src/example.cpp
+    src/token.cpp
+    src/lexer.cpp
+    src/parser.cpp
+    src/debug.cpp
 )
 set(TESTFILES        # All .cpp files in tests/
     tests/main.cpp
@@ -72,7 +75,7 @@ target_enable_lto(main optimized)  # enable link-time-optimization if available 
 set_target_properties(
     ${LIBRARY_NAME} main
       PROPERTIES
-        CXX_STANDARD 17
+        CXX_STANDARD 20
         CXX_STANDARD_REQUIRED YES
         CXX_EXTENSIONS NO
 )
